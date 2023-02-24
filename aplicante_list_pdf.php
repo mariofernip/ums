@@ -68,7 +68,7 @@ $pdf-> Cell(5);
 		$pdf->Cell(22,6,'Foto',1);
 		$pdf->Ln();
 
-					$qry = $user->get_all_student();
+					$qry = $user->get_all_postulante();
 					
  
 					$sl=1;

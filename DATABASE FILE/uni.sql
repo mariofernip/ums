@@ -198,8 +198,13 @@ INSERT INTO `result` (`id`, `st_id`, `marks`, `sub`, `semester`) VALUES
 --
 
 CREATE TABLE `st_info` (
-  `st_id` int(11) NOT NULL,
+  `st_id` INTEGER,
   `name` varchar(100) NOT NULL,
+   `lastname` VARCHAR(100),
+   `cedula` VARCHAR(10), 
+   `titulo` VARCHAR(500),
+   `cargo` VARCHAR(500),
+   `estado` integer,
   `password` varchar(32) NOT NULL,
   `email` varchar(50) NOT NULL,
   `bday` date NOT NULL,
@@ -208,6 +213,7 @@ CREATE TABLE `st_info` (
   `gender` varchar(10) NOT NULL,
   `address` varchar(255) NOT NULL,
   `img` varchar(255) DEFAULT NULL
+   
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

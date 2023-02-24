@@ -337,9 +337,52 @@ class login_registration_class{
 		$result = $conn->query($sql);
 		return $result;
 	}
+
+
+	// Get all info of a specific postulante by Student ID
+	public function get_recepcion_documentos_byid($st_id){
+		global $conn;
+		$query = $conn->query("select * from recepcion_documentos where postulante_id='$st_id'");
+		return $query;
+	}
 	
+		// Get all info of a specific postulante by Student ID
+		public function update_marca($st_id){
+			global $conn;
+			$query = $conn->query("update recepcion_documentos set marca=2 where id='$st_id'");
+			return $query;
+		}
 	
+		// Get all info of a specific postulante by Student ID
+		public function update_registrar_marcas($st_id){
+			global $conn;
+				$query = $conn->query("update recepcion_documentos set marca=1 where id='$st_id'");
+				return $query;	
+		}		
+
 	
+		// Get all info of a specific postulante by Student ID
+		public function update_quitar_marcas($st_id){
+			global $conn;  
+				$query = $conn->query("update recepcion_documentos set marca=0 where id='$st_id'");
+				return $query;	
+		}	
+
+	// Get all info of a specific postulante by Student ID
+	public function get_count_total_documentos($st_id){
+		global $conn;  
+			$query = $conn->query("select count(*) c from recepcion_documentos where estado=1 and postulante_id='$st_id'");
+			return $query;	
+	}	
+		
+
+// Get all info of a specific postulante by Student ID
+public function get_count_total_documentos_entregados($st_id){
+	global $conn;  
+		$query = $conn->query("select count(*) c from recepcion_documentos where estado=1 and marca=1 and postulante_id='$st_id'");
+		return $query;	
+}	
+
 	/* Total average marks
 	public function sgpa(){
 		global $conn;

@@ -20,6 +20,7 @@ include "php/headertop_admin.php";
 			<h3>Aplicante</h3>
 			<ul>
 				<li><a href="admin_all_student.php">Ver todos Aplicantes</a></li>
+				<li><a href="admin_reg_documentos.php">Registro Recepción Documentos</a></li>
 				<li><a href="st_result.php">Aplicante Resultado</a></li>
 				<li><a href="class_att.php">Asistencia</a></li>
 				<li><a href="aplicante_list_pdf.php"><button>descargar Lista Aplicantes</button></a></li>
