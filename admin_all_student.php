@@ -18,12 +18,12 @@ include "php/headertop_admin.php";
 ?>
 <div class="all_student">
 	<div class="search_st">
-		<div class="hdinfo"><h3>All Registered Student List</h3></div>
+		<div class="hdinfo"><h3>Lista de Postulantes Registrados</h3></div>
 		
 		<div class="search">
 		<form action="admin_search_student.php" method="GET">
-			<input type="text" name="src_student" placeholder="search student" />
-			<input type="submit" value="Search" />
+			<input type="text" name="src_student" placeholder="buscar postulante" />
+			<input type="submit" value="Buscar" />
 		</form>
 		</div>
 	</div>
@@ -47,7 +47,7 @@ include "php/headertop_admin.php";
 			</tr>
 			<?php 
 			$i=0;
-				$alluser = $user->get_all_student();
+				$alluser = $user->get_all_postulante();
 				
 				while($rows = $alluser->fetch_assoc()){
 				$i++;
