@@ -256,6 +256,7 @@ include "php/headertop_admin.php";
 						</table>
 						<div class="back fix">
 						<p style="text-align:center"><input style="background:#3498db;color:#fff;width:168px;border-radius:5px;" type="submit" name="Update" value="Actualizar"></p>
+                        <p style="text-align:center"><input style="background:#db346e;color:#fff;width:168px;border-radius:5px;" type="submit" name="Aprueba" value="Aprueba"></p>
 						</div>
 							
 				</form>

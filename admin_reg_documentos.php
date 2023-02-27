@@ -43,7 +43,8 @@ include "php/headertop_admin.php";
 				<th>Ver Perfil</th>
 				<th>Editar</th>
 				<th>Borrar</th>
-				<th>Documentos</th>
+                <th>Generar Lista</th>
+                <th>Documentos</th>
 				<th>Photo</th>
 			</tr>
 			<?php 
@@ -85,7 +86,8 @@ include "php/headertop_admin.php";
 				<td><a href="admin_single_student.php?id=<?php echo $rows['st_id'];?>">Ver Detalles</a></td>
 				<td><a href="admin_single_postulante_recepcion_documentos_update.php?id=<?php echo $rows['st_id'];?>">Editar</a></td>
 				<td><a href="admin_delete_student.php?id=<?php echo $rows['st_id'];?>">Borrar</a></td>
-				<td><?php echo $tot_doc_rec;?> de <?php echo $tot_doc;?></td>
+                <td><a href="admin_generar_listado_documentos.php?id=<?php echo $rows['st_id'];?>">Generar Lista</a></td>
+                <td><?php echo $tot_doc_rec;?> de <?php echo $tot_doc;?></td>
 				<td><img src="img/student/<?php echo $rows['img'];?>" width="50px" height="50px" title="<?php echo $rows['name'];?>" /></td>
 			</tr>
 			<?php } ?>

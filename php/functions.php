@@ -381,7 +381,60 @@ public function get_count_total_documentos_entregados($st_id){
 	global $conn;  
 		$query = $conn->query("select count(*) c from recepcion_documentos where estado=1 and marca=1 and postulante_id='$st_id'");
 		return $query;	
-}	
+}
+
+//delete student
+    public function generar_listado_documentos($st_id){
+        global $conn;
+        $sql = "select count(*) c from recepcion_documentos where estado=1 and postulante_id='$st_id' ";
+        $resultadoContador = $conn->query($sql);
+        if($resultadoContador){
+            $tot_doc_rec=0;
+            while ($row = $resultadoContador->fetch_assoc()) {
+                $tot_doc_rec= $row['c'];
+            }
+            if($tot_doc_rec==0){
+                $sqlConcursoAsignatura = "select * from concurso_asignatura where estado=1 and postulante_id='$st_id' ";
+                $resultadoConcursoAsignatura = $conn->query($sqlConcursoAsignatura);
+                if($resultadoConcursoAsignatura){
+                    $tot_res_con_asi=0;
+                    while ($rowRCA = $resultadoConcursoAsignatura->fetch_assoc()) {
+                        $concursoId=$rowRCA['concurso_id'];
+                        $sqlConcursoRequisitos = "select * from concurso_requisitos where estado=1 and concurso_id='$concursoId' ";
+                        $resultadoConcursoAsignatura = $conn->query($sqlConcursoRequisitos);
+                        while ($row = $resultadoConcursoAsignatura->fetch_assoc()) {
+                            $postulanteId=$st_id;
+                            $requisitoId=$row['requisito_id'];
+
+                            $fechaActual= date('Y-m-d H:i:s');
+                            $sqlInsertarRecepcionDocumentos = "INSERT INTO `uni`.`recepcion_documentos`(`descripcion`, `marca`, `estado`, `observacion`, `fecha`, `postulante_id`, `requisito_id`, `imagen`, `concurso_id`) 
+                                                            VALUES ( NULL, 0, 1, NULL, '$fechaActual', '$postulanteId', '$requisitoId', NULL, $concursoId); ";
+                            echo $sqlInsertarRecepcionDocumentos;
+
+                            $resultadoRecepcionDocumentos = $conn->query($sqlInsertarRecepcionDocumentos);
+
+
+                            return $resultadoRecepcionDocumentos;
+                        }
+
+
+                    }
+                }
+
+            }
+        }else{
+            return false;
+        }
+
+        /*$sql = "delete from st_info where st_id='$st_id' ";
+        $result = $conn->query($sql);
+        if($result){
+            return true;
+        }else{
+            return false;
+        }*/
+    }
+
 
 	/* Total average marks
 	public function sgpa(){

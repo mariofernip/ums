@@ -47,7 +47,7 @@ include "php/headertop_admin.php";
 			</tr>
 			<?php 
 			$i=0;
-				$alluser = $user->get_all_postulante();
+				$alluser = $user->get_all_student();
 				
 				while($rows = $alluser->fetch_assoc()){
 				$i++;
