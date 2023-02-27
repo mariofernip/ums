@@ -46,9 +46,7 @@ include "php/headertop_admin.php";
 						if(isset($_POST['button1'])) {
 							echo "Button 1 is clicked here";
 						   }
-						   if(isset($_POST['button2'])) {
-							echo "Button 2 is clicked here";
-						   }
+
 
 					if($_SERVER['REQUEST_METHOD'] == "POST"){
 						//code for img
@@ -125,8 +123,14 @@ include "php/headertop_admin.php";
 						if(isset($updateQuitar) || isset($updateRegistrar)){
 								echo "<h4 style='color:green;text-align:center'>Guardado exitosamente</h4>";
 						 }
-						  
 
+
+                        if(isset($_POST['aprueba'])) {
+                            $st_avanza_fase =  $user->update_postulante_fase_documentos($st_id, 1);
+                        }
+                        if(isset($_POST['no_aprueba'])) {
+                            $st_avanza_fase =  $user->update_postulante_fase_documentos($st_id, 0);
+                        }
 						//   foreach($st_marcados as $item){
 						// 	echo $item.',';
 						//   }
@@ -256,7 +260,9 @@ include "php/headertop_admin.php";
 						</table>
 						<div class="back fix">
 						<p style="text-align:center"><input style="background:#3498db;color:#fff;width:168px;border-radius:5px;" type="submit" name="Update" value="Actualizar"></p>
-                        <p style="text-align:center"><input style="background:#db346e;color:#fff;width:168px;border-radius:5px;" type="submit" name="Aprueba" value="Aprueba"></p>
+                        <p style="text-align:center">
+                            <input style="background:#db346e;color:#fff;width:168px;border-radius:5px;" type="submit" name="aprueba" value="Aprueba">
+                            <input style="background:#db346e;color:#fff;width:168px;border-radius:5px;" type="submit" name="no_aprueba" value="No Aprueba"></p>
 						</div>
 							
 				</form>

@@ -425,16 +425,16 @@ public function get_count_total_documentos_entregados($st_id){
         }else{
             return false;
         }
-
-        /*$sql = "delete from st_info where st_id='$st_id' ";
-        $result = $conn->query($sql);
-        if($result){
-            return true;
-        }else{
-            return false;
-        }*/
     }
 
+
+
+    //Update Student Profile
+    public function update_postulante_fase_documentos($sid, $estado){
+        global $conn;
+        $query = $conn->query("update st_info set fase_recepcion_documentos='$estado' where st_id='$sid'");
+        return true;
+    }
 
 	/* Total average marks
 	public function sgpa(){

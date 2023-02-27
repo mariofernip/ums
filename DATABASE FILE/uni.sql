@@ -312,6 +312,12 @@ alter table recepcion_documentos add COLUMN concurso_id integer;
 ALTER TABLE recepcion_documentos
     ADD FOREIGN KEY (concurso_id) REFERENCES concurso(id);
 
+
+alter table st_info add COLUMN fase_recepcion_documentos integer default 0;
+alter table st_info add COLUMN fase_meritos integer default 0;
+alter table st_info add COLUMN fase_oposicion integer default 0;
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
