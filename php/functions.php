@@ -436,6 +436,12 @@ public function get_count_total_documentos_entregados($st_id){
         return true;
     }
 
+    public function get_concurso_por_postulante($st_id){
+        global $conn;
+        $query = $conn->query("select concurso_id, (select nombre from concurso where id=concurso_id) nombre_concurso from concurso_asignatura where postulante_id='$st_id'");
+        return $query;
+    }
+
 	/* Total average marks
 	public function sgpa(){
 		global $conn;

@@ -16,6 +16,12 @@
 $pageTitle = "Recepción Documentos";
 include "php/headertop_admin.php";
 ?>
+    <script>
+        var btn = document.getElementById('myBtn');
+        btn.addEventListener('click', function() {
+            document.location.href = 'some/page';
+        });
+    </script>
 <div class="all_student">
 	<div class="search_st">
 		<div class="hdinfo"><h3>Lista de Postulantes Registrados</h3></div>
@@ -41,6 +47,7 @@ include "php/headertop_admin.php";
 				<th>Nombre</th>
 				<th>ID</th>
 				<th>Ver Perfil</th>
+                <th>Concursos</th>
 				<th>Editar</th>
 				<th>Borrar</th>
                 <th>Generar Lista</th>
@@ -50,7 +57,8 @@ include "php/headertop_admin.php";
 			<?php 
 			$i=0;
 				$alluser = $user->get_all_student();
-				
+
+
 				while($rows = $alluser->fetch_assoc()){
 
 				$total_documentos=$user->get_count_total_documentos($rows['st_id']);		
@@ -78,12 +86,30 @@ include "php/headertop_admin.php";
 					$tot_doc_rec=0;
 				}
 				$i++;
-			?>
+
+//                    if(isset($_POST['submit'])){
+//                        if(!empty($_POST['Movies'])) {
+//                            $selected = $_POST['Movies'];
+//                            echo 'You have chosen: ' . $selected;
+//                        } else {
+//                            echo 'Please select the value.';
+//                        }
+//                    }
+                    ?>
 			<tr>
 				<td><?php echo $i; ?></td>
 				<td><?php echo $rows['name'];?></td>
 				<td><?php echo $rows['st_id'];?></td>
 				<td><a href="admin_single_student.php?id=<?php echo $rows['st_id'];?>">Ver Detalles</a></td>
+                <td>
+<!--                    <select name="clientes" id="clientes">-->
+                        <?php
+                        $all_concurso_por_postulante = $user->get_concurso_por_postulante($rows['st_id']);
+                        foreach ($all_concurso_por_postulante as $r): ?>
+                        <a href="admin_single_postulante_recepcion_documentos_update.php?id=<?php echo $rows['st_id'];?>"><?php echo $r['nombre_concurso']; ?></a>
+                        <?php endforeach; ?>
+<!--                    </select>-->
+                </td>
 				<td><a href="admin_single_postulante_recepcion_documentos_update.php?id=<?php echo $rows['st_id'];?>">Editar</a></td>
 				<td><a href="admin_delete_student.php?id=<?php echo $rows['st_id'];?>">Borrar</a></td>
                 <td><a href="admin_generar_listado_documentos.php?id=<?php echo $rows['st_id'];?>">Generar Lista</a></td>
