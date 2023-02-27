@@ -240,7 +240,7 @@ include "php/headertop_admin.php";
 							<td><input style="background:#3498db;color:#fff;width:168px;border-radius:5px;" type="submit" name="button2" value="<?php echo $row['id'];?>"/> -->
 
 							</td>
-							<td><?php echo $row['descripcion'];?></td>
+							<td><?php echo $row['req'];?></td>
 
 						
 						</tr>

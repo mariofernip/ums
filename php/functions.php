@@ -342,7 +342,7 @@ class login_registration_class{
 	// Get all info of a specific postulante by Student ID
 	public function get_recepcion_documentos_byid($st_id){
 		global $conn;
-		$query = $conn->query("select * from recepcion_documentos where postulante_id='$st_id'");
+		$query = $conn->query("select *, (select nombre from requisito where id=requisito_id) req from recepcion_documentos where postulante_id='$st_id'");
 		return $query;
 	}
 	
